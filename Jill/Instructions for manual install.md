@@ -1,0 +1,1 @@
+Assuming you have arf, hdf5 and jack already installed.
