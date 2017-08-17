@@ -1,4 +1,4 @@
-Assuming you have arf, hdf5 and jack already installed.
+Assuming you have jack already installed.
 
 # JILL prerequisites: Install HDF5 library
 
