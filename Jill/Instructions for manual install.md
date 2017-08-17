@@ -1,8 +1,6 @@
 Assuming you have arf, hdf5 and jack already installed.
 
-# Prerequisites: Install HDF5 library 
-
-# JILL prerequisites
+# JILL prerequisites: Install HDF5 library
 
     sudo apt-get install scons libboost-all-dev libsndfile1-dev libsamplerate0-dev
     hdf5-helpers hdf5-tools libhdf5-dev libzmq-dev python-dev libxft-dev libxrandr-dev
