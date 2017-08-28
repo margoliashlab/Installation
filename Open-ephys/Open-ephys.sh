@@ -14,6 +14,10 @@ sudo apt-get install qt5-default libxrandr-dev
 sudo apt-get install build-essential
 sudo apt-get install qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5
 
+#make a new directory
+cd /home/$USER
+sudo mkdir Lab-Softwares
+sudo chmod -R 777 /home/$USER/Lab-Softwares
 
 #Open_ephys
 cd /home/$USER/Lab-Softwares
