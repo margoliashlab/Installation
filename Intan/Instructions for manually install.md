@@ -23,6 +23,13 @@ Note: In new versions of Ubuntu>16, build-essential comes pre-installed
   
     cd ../../source
 
+# Download USB drivers and copy
+
+	wget http://intantech.com/files/Intan_controller_USB_drivers.zip
+	unzip Intan_controller_USB_drivers.zip -d USB\ interface\ drivers
+	cd /home/$USER/Lab-Softwares/USB\ interface\ drivers/USB\ interface\ drivers/Linux
+	sudo cp -a 60-opalkelly.rules /etc/udev/rules.d/
+	cd /home/$USER/Lab-Softwares
 
 # Add the following line to the RHD2000interface.pro file: 
 	unix:LIBS += -L./ -l okFrontPanel -ldl 
