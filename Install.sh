@@ -78,6 +78,7 @@ pip install urwid
 # Intan 
 cd /home/$USER/Lab-Softwares
 wget http://intantech.com/files/RHD2000interface_source_code_v1_5_2.zip
+
 if [ "$?" = "0" ]; then
         echo "Download successful"
 else
@@ -91,8 +92,35 @@ else
     exit $EXIT_CODE
   
 fi
-mkdir RHD2000interface_source_code_v1_5_2
+
+# Intan USB drivers
+wget http://intantech.com/files/Intan_controller_USB_drivers.zip
+if [ "$?" = "0" ]; then
+        echo "USB drivers download successful"
+else
+      color() {
+          printf '\033[%sm%s\033[m\n' "$@"
+      
+      }
+  string="USB drivers download failed. Please verify download link"
+  color '31;1' "$string" >&2
+
+    exit $EXIT_CODE
+  
+fi
+#USB drivers copy
+
+unzip Intan_controller_USB_drivers.zip -d USB\ interface\ drivers
+sudo chmod -R 777 /home/$USER/Lab-Softwares/USB\ interface\ drivers
+cd /home/$USER/Lab-Softwares/USB\ interface\ drivers/USB\ interface\ drivers/Linux
+sudo cp -a 60-opalkelly.rules /etc/udev/rules.d/
+cd /home/$USER/Lab-Softwares
+
+# Intan unzip
+sudo mkdir RHD2000interface_source_code_v1_5_2
 unzip RHD2000interface_source_code_v1_5_2.zip -d RHD2000interface_source_code_v1_5_2
+
+
 sudo chmod -R 777 /home/$USER/Lab-Softwares/RHD2000interface_source_code_v1_5_2
 cd RHD2000interface_source_code_v1_5_2/Opal\ Kelly\ library\ files/Linux\ 64-bit/
 sudo cp -a libokFrontPanel.so /home/$USER/Lab-Softwares/RHD2000interface_source_code_v1_5_2/source
@@ -115,7 +143,7 @@ echo "Execute following lines to run Intan RHD2000interface"
 echo ""
 echo "./RHD2000interface "
 
-sudo apt-get update
+
 
 
 
@@ -183,7 +211,7 @@ else
   
 fi
 
-
+sudo apt-get update
 echo ""
 echo "===================="
 echo "Open-ephys installed successfully"
