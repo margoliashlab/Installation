@@ -31,4 +31,30 @@ Demo: Lets us say we get version 2_0_0 for new Intan GUI
 3. Save script and run it from command line.
 
 
+# Add path in system PATH.
+To run open-ephys and Intan RHD2000interface directly from terminal, 
+
+      sudo gedit /etc/environment
+
+1. Add your "path to directory" containing RHD2000interface executable 
+  
+  e.g:
+  /home/{user-name}/Lab-Softwares/RHD2000interface_v1.5.2/source
+
+ PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/snap/bin:/home/spock/Lab-Softwares/RHD2000interface_v1.5.2/source"
+
+2. For open-ephys:
+
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/snap/bin:/home/spock/Lab-Softwares/RHD2000interface_v1.5.2/source:/home/spock/Lab-Softwares/plugin-GUI/Builds/Linux/build”
+
+
+To effect changes, run . /etc/environment. 
+Since this file is just a simple script it will run and assign the new path to the PATH environment variable.
+
+      . /etc/environment
+
+
+3. Restart
+
+
 ( Please update any changes made to the script in "Manual-Install" document specific to each software as well as the "Install" bash script)
