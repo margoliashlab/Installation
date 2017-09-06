@@ -1,3 +1,7 @@
+Make sure to give read, write and execute permissions to every script you want run from the terminal
+
+                    sudo chmod 777 Install.sh
+
 # Installation
 This repository includes instructions for installation of lab programs: Intan, open-ephys, jack, jill, arf, yass, panoptisong and others with bash script or manually by following documentation.
 
