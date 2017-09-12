@@ -1,23 +1,29 @@
 #!/bin/bash
-echo ""
-echo "===================="
-echo "Welcome to Margoliash's lab"
-echo "===================="
-echo ""
-
-echo "Please make sure to update any changes in documentation and bash script"
-
-#make a new directory
 cd /home/$USER
 sudo mkdir Lab-Softwares
 sudo chmod -R 777 /home/$USER/Lab-Softwares
+cd /home/$USER/Lab-Softwares
 
-sudo apt-get install qt5-default libxrandr-dev
-sudo apt-get install build-essential
+
+sudo add-apt-repository main
+sudo add-apt-repository universe
+sudo add-apt-repository restricted
+sudo add-apt-repository multiverse
+sudo apt-get update
+
+
+sudo apt-get install git
+sudo apt-get install build-essential 
+sudo apt-get install libfontconfig1
+sudo apt-get install scons libboost-all-dev python-dev
+sudo apt-get install qtdeclarative5-dev libxrandr-dev
+
+sudo apt-get install qt5-default
 sudo apt-get install qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5
 
-# Intan 
-cd /home/$USER/Lab-Softwares
+
+
+
 wget http://intantech.com/files/RHD2000interface_source_code_v1_5_2.zip
 
 if [ "$?" = "0" ]; then
@@ -55,10 +61,9 @@ unzip Intan_controller_USB_drivers.zip -d USB\ interface\ drivers
 sudo chmod -R 777 /home/$USER/Lab-Softwares/USB\ interface\ drivers
 cd /home/$USER/Lab-Softwares/USB\ interface\ drivers/USB\ interface\ drivers/Linux
 sudo cp -a 60-opalkelly.rules /etc/udev/rules.d/
-cd /home/$USER/Lab-Softwares
+cd /home/$USER/Lab-Softwares/
 
 # Intan unzip
-sudo mkdir RHD2000interface_source_code_v1_5_2
 unzip RHD2000interface_source_code_v1_5_2.zip -d RHD2000interface_source_code_v1_5_2
 
 
@@ -74,18 +79,24 @@ cd ..
 sudo cp -a main.bit /home/$USER/Lab-Softwares/RHD2000interface_source_code_v1_5_2/source
 cd source
 sudo qmake *.pro
-sed -i -e '44iCXXFLAGS += -std=c++11\' Makefile
-sudo make
-echo ""
-echo "===================="
-echo "Intan RHD2000interface installed successfully"
-echo "===================="
-echo "Execute following lines to run Intan RHD2000interface"
-echo ""
-echo "./RHD2000interface "
+sed -i -e '40iCXXFLAGS += -std=c++11\' Makefile
+sudo make -j4
 
-sudo apt-get update
 
-echo "============="
-echo "Time for Reboot"
-echo "============="
+if [ "$?" = "0" ]; then
+        echo "install successful"
+	echo ""
+	echo "===================="
+	echo "Intan RHD2000interface installed successfully"
+	echo "===================="
+else
+      color() {
+          printf '\033[%sm%s\033[m\n' "$@"
+      
+      }
+  string="Installation failed."
+  color '31;1' "$string" >&2
+
+    exit $EXIT_CODE
+  
+fi
