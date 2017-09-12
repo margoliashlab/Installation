@@ -8,10 +8,16 @@ echo ""
 echo "Please make sure to update any changes in documentation and bash script"
 
 
+sudo add-apt-repository main
+sudo add-apt-repository universe
+sudo add-apt-repository restricted
+sudo add-apt-repository multiverse
+sudo apt-get update
 
-sudo apt-get install scons libboost-all-dev libsndfile1-dev libsamplerate0-dev hdf5-helpers hdf5-tools libhdf5-dev libzmq-dev python-dev libxft-dev
-sudo apt-get install qt5-default libxrandr-dev
 sudo apt-get install build-essential
+sudo apt-get install scons libboost-all-dev libsndfile1-dev libsamplerate0-dev hdf5-helpers hdf5-tools libhdf5-dev libzmq-dev python-dev libxft-dev
+sudo apt-get install qtdeclarative5-dev libxrandr-dev
+sudo apt-get install qt5-default
 sudo apt-get install qtmultimedia5-dev libqt5multimediawidgets5 libqt5multimedia5-plugins libqt5multimedia5
 
 #make a new directory
