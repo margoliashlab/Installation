@@ -1,3 +1,4 @@
+#!/bin/bash
 cd /home/$USER
 sudo mkdir Lab-Softwares
 sudo chmod -R 777 /home/$USER/Lab-Softwares
@@ -14,7 +15,7 @@ sudo apt-get update
 sudo apt-get install git
 sudo apt-get install build-essential 
 sudo apt-get install libfontconfig1
-sudo apt-get install scons libboost-all-dev libsndfile1-dev libsamplerate0-dev hdf5-helpers hdf5-tools libhdf5-dev libzmq-dev python-dev libxft-dev
+sudo apt-get install scons libboost-all-dev python-dev
 sudo apt-get install qtdeclarative5-dev libxrandr-dev
 
 sudo apt-get install qt5-default
